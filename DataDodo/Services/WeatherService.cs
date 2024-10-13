@@ -1,4 +1,5 @@
-﻿using DataDodo.Api.Models;
+﻿    using DataDodo.Api.Models;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace DataDodo.Api.Services
 {
@@ -11,13 +12,9 @@ namespace DataDodo.Api.Services
     {
         private readonly ILogger<WeatherService> _logger;
 
-        public WeatherService(ILogger<WeatherService> logger)
+        public WeatherService(ILogger<WeatherService> logger = null)
         {
-            _logger = logger;
-        }
-
-        public WeatherService()
-        {
+            _logger = logger ?? NullLogger<WeatherService>.Instance;
         }
 
         private static readonly string[] Summaries = new[]
